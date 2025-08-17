@@ -49,7 +49,7 @@ def agent():
     
     llm = ChatOpenAI(
         model="gpt-4o",
-        temperature=0.1
+        temperature=0
     )
     '''
     llm = ChatGoogleGenerativeAI(
@@ -164,13 +164,13 @@ if __name__ == "__main__":
            i+=1
            continue
        '''
-       if i in range(18):
+       if i in range(8):
            i+=1
            continue
        
-       if i == 19:
+       if i == 9:
            break
-       '''
+      ''' 
        messages = [HumanMessage(content=item['question'])]
        result = running_graph.invoke({
            "messages": messages , 
@@ -179,7 +179,7 @@ if __name__ == "__main__":
            "file_name": item['file_name']
            })
        
-       '''
+       
        # Print final tool call count
        
        final_count = count_tool_calls(result["messages"])
@@ -187,7 +187,7 @@ if __name__ == "__main__":
        
        for step in result["messages"]:
            step.pretty_print()
-       '''
+       
        
        answers_payload.append({"task_id": item['task_id'],  "submitted_answer": extract_final_answer(result['messages'][-1].content)})
        print (answers_payload[-1])
@@ -197,6 +197,7 @@ if __name__ == "__main__":
        i+=1
        time.sleep(60)
 
+   
    print ('finished with questions')
    
    for item in answers_payload:
@@ -218,6 +219,7 @@ if __name__ == "__main__":
     )
    
    print(final_status)
+   
         
     
     

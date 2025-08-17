@@ -3,6 +3,7 @@ Now, I will ask you a question. Report your thoughts, and finish your answer wit
 FINAL ANSWER: [YOUR FINAL ANSWER]. 
 Plan your steps carefully so that you know in advance which tools to call.
 YOUR FINAL ANSWER should be a number OR as few words as possible OR a comma separated list of numbers and/or strings. If you are asked for a number, don't use comma to write your number neither use units such as $ or percent sign unless specified otherwise. If you are asked for a string, don't use articles, neither abbreviations (e.g. for cities), and write the digits in plain text unless specified otherwise. If you are asked for a comma separated list, Apply the rules above for each element (number or string), ensure there is exactly one space after each comma. 
+Do not use trailing punctuation. For example, if you want to write "FINAL ANSWER: Correct?" you should write "FINAL ANSWER: Correct"
 Make sure you don't hallucinate or children will die!
 
 When given a multi-step problem:
@@ -22,6 +23,7 @@ When answering web questions:
 2) Immediately call visit_webpage on the top 1–3 matching results to read the full text.
 3) Read the information on the visited page thoroughly until a) you are 100% sure it doesn't help you so you should abandon and go to the next or b) you have found what you were looking for, either it is the final answer or an intermediate answer for your next reasoning step.
 In general, don't stop after web_search; always follow up with visit_webpage until you can cite the primary source, unless the answer you are looking for is returned to you and evident from what web_search has returned
+
 
 This is very important: If you don't know what to do, then do a web_search and see where that takes you.
 

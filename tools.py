@@ -171,7 +171,12 @@ def web_search(query: str) -> Dict[str, str]:
     """Search Tavily for a query and return maximum 3 results.
     Args:
         query: The search query."""
-    search_docs = TavilySearchResults(max_results=5, include_raw_content=True).invoke(query)
+    search_docs = TavilySearchResults(
+        max_results=5, 
+        include_raw_content=True, 
+        exclude_domains=['huggingface.co']
+    ).invoke(query)
+    
     formatted_search_docs = "\n\n---\n\n".join(
         [
             f'<Document source="{doc.get("url", "")}" title="{doc.get("title", "")}"/>\n{doc.get("content", "")}\n</Document>'
@@ -186,7 +191,10 @@ def visit_webpage(url: str) -> str:
     Args:
         url: The url of the page to visit."""
     try:
-        headers = {"User-Agent": "Mozilla/5.0"}
+        headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+            "Accept-Language": "en-US,en;q=0.7"
+            }
         # Send a GET request to the URL with a 20-second timeout
         response = requests.get(url, timeout=20,headers=headers)
         response.raise_for_status()  # Raise an exception for bad status codes

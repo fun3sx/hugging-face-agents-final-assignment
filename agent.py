@@ -197,7 +197,13 @@ if __name__ == "__main__":
        i+=1
        time.sleep(60)
 
-   submission_data = {"username": "fun3s", "agent_code": "https://huggingface.co/spaces/", "answers": answers_payload}
+   print ('finished with questions')
+   
+   for item in answers_payload:
+       if item['submitted_answer'] is None:
+           item['submitted_answer'] = ''
+
+   submission_data = {"username": "fun3s", "agent_code": "https://github.com/fun3sx/hugging-face-agents-final-assignment", "answers": answers_payload}
    
    
    response = requests.post(submit_url, json=submission_data, timeout=60)
